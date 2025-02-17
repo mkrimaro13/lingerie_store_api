@@ -2,8 +2,7 @@ import 'package:postgres/postgres.dart';
 import 'package:dotenv/dotenv.dart';
 
 loadEnv() {
-  var env = DotEnv(includePlatformEnvironment: true)..load();
-  return env;
+  return DotEnv()..load();
 }
 
 Future<Connection> connectToDB() async {
@@ -11,7 +10,8 @@ Future<Connection> connectToDB() async {
     var env = loadEnv();
     final connection = await Connection.open(
         Endpoint(
-          host: env['host'],
+          // host: env['host'],
+          host: 'lingeriedatabase',
           port: int.parse(env['port']),
           database: env['database'],
           username: env['username'],
