@@ -10,8 +10,8 @@ Future<Connection> connectToDB() async {
     var env = loadEnv();
     final connection = await Connection.open(
         Endpoint(
-          // host: env['host'],
-          host: 'lingeriedatabase',
+          host: env['host'],
+          // host: 'lingeriedatabase',
           port: int.parse(env['port']),
           database: env['database'],
           username: env['username'],

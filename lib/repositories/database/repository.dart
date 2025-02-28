@@ -8,7 +8,8 @@ class DatabaseRepository implements Repository {
   Future<List<Product>> listProducts() async {
     try {
       Connection connection = await connectToDB();
-      Result result = await connection.execute("select * from products");
+      Result result =
+          await connection.execute("select * from products group by id,talla");
       List<Product> products = result
           .map((row) => Product(
                 id: int.parse(row[0].toString()),
